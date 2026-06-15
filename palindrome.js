@@ -9,33 +9,52 @@
 
 // console.log(test("madam"));
 
-function test(str) {
-  str = str.trim().toLowerCase();
+// function test(str) {
+//   str = str.trim().toLowerCase();
 
-  let cleaned = "";
+//   let cleaned = "";
 
-  function isAlphaNumeric(s) {
-    return /^[a-z0-9]$/i.test(s);
-  }
+//   function isAlphaNumeric(s) {
+//     return /^[a-z0-9]$/i.test(s);
+//   }
 
-  for (let i = 0; i < str.length; i++) {
-    if (isAlphaNumeric(str[i])) {
-      cleaned += str[i];
-    }
-  }
+//   for (let i = 0; i < str.length; i++) {
+//     if (isAlphaNumeric(str[i])) {
+//       cleaned += str[i];
+//     }
+//   }
+
+//   let left = 0;
+//   let right = cleaned.length - 1;
+
+//   while (left < right) {
+//     if (cleaned[left] !== cleaned[right]) {
+//       return false;
+//     }
+//     left++;
+//     right--;
+//   }
+
+//   return true;
+// }
+
+// console.log(test("A man, a plan, a canal: Panama"));
+
+const test = (str) => {
+  str = str.toLowerCase().replace(/[^a-zA-Z]/g, ""); // ^ start $ end index
 
   let left = 0;
-  let right = cleaned.length - 1;
+  let right = str.length - 1;
 
   while (left < right) {
-    if (cleaned[left] !== cleaned[right]) {
+    if (str[left] !== str[right]) {
       return false;
     }
-    left++;
     right--;
+    left++;
   }
 
   return true;
-}
+};
 
 console.log(test("A man, a plan, a canal: Panama"));
