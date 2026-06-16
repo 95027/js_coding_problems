@@ -1,14 +1,28 @@
-function test(str1, str2) {
-  str1 = str1.split("").sort().join("");
-  str2 = str2.split("").sort().join("");
+// function test(s1, s2) {
+//   if (s1.length !== s2.length) return false;
+//   s1 = s1.split("").sort().join("");
+//   s2 = s2.split("").sort().join("");
 
-  if (str1 === str2) return true;
-  for (let i = 0; i < str2.length; i++) {
-    if (!str1.includes(str2[i])) {
+//   return s1 === s2;
+// }
+
+// console.log(test("listen", "silen"));
+
+var test = function (s1, s2) {
+  if (s1.length !== s2.length) return false;
+  let counts = {};
+  for (let s of s1) {
+    counts[s] = (counts[s] || 0) + 1;
+  }
+
+  for (let s of s2) {
+    if (!counts[s]) {
       return false;
     }
+    counts[s] -= 1;
   }
-  return true;
-}
 
-console.log(test("listen", "silen"));
+  return true;
+};
+
+console.log(test("listen", "silent"));
