@@ -1,0 +1,20 @@
+var test = function (nums, target) {
+  let left = 0;
+  let right = nums.length - 1;
+
+  while (left <= right) {
+    let middle = Math.floor(left + (right - left) / 2);
+
+    if (nums[middle] === target) {
+      return middle;
+    } else if (nums[left] > target) {
+      right = middle - 1;
+    } else {
+      left = middle + 1;
+    }
+  }
+
+  return -1;
+};
+
+console.log(test([1, 3, 5, 7, 9, 11, 13, 15], 1));
