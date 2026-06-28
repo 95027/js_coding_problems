@@ -34,3 +34,23 @@ var test = function (nums, k) {
 };
 
 console.log(test([1, 2, 3, 4, 5, 6, 7], 3));
+
+function test(arr, k) {
+  k = k % arr.length;
+
+  // return [...arr.slice(-k), ...arr.slice(0, -k)];
+
+  let out = [];
+
+  for (let i = arr.length - k; i < arr.length; i++) {
+    out.push(arr[i]);
+  }
+
+  for (let i = 0; i < arr.length - k; i++) {
+    out.push(arr[i]);
+  }
+
+  return out;
+}
+
+console.log(test([1, 2, 3, 4, 5], 3));
